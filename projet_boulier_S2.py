@@ -22,16 +22,14 @@ xBoule1, yBoule1, x1Boule1, y1Boule1 = 20, HAUTEUR-5, 70, HAUTEUR-55
 xBoule6, yBoule6, x1Boule6, y1Boule6 = 20 , 10, 70, 60
 
 ########## fonctions ##########
-# variable globale
+
 boule={}
 
 # MODE SIMULATION
 
 def init_boulier():
     """affiche un boulier avec les boules désactivées"""
-    canvas.delete()
     for i in range(n):
-            canvas.create_line(xTige1 + i*55, yTige1, x1Tige1+ i*55, y1Tige1, fill = '#F5F5DC', width = 3, tags="tiges" )
             liste1 = []
             for a in range(5):
                 x0,y0,x1,y1= xBoule1 + i*55, yBoule6, x1Boule1 + i*55, y1Boule6
@@ -41,21 +39,20 @@ def init_boulier():
     canvas.create_line(xA, yA, 20+n*55, yB, fill = 'maroon', width = '10', tags="cadre")               
 
 
-def affiche_boulier(n) :
+def affiche_boulier() :
     """affiche un boulier avec la dimension à la demande de l'utilisateur
     et création d'un dictionnaire de boules"""
 
     global boule
     gestion(n)
     
-    n = int(input("choisir la dimension du boulier"))
-    da=(17,21,23)
-    if n in da :
+    q = int(z_texte.get(index1 = "1.0", index2 = "end-1c"))   
+    if q in (17, 21, 23) :
+        canvas.create_rectangle (xCadre, yCadre, 20+q*55, y1Cadre, width = 6, outline = 'maroon', tags = "cadre")
 
-    # matrice faisant apparaitre le nombre de tiges et de boules à la demande de l'utilisateur
-        for i in range(n): 
+        for i in range(q): 
             liste1 = []
-            canvas.create_line(xTige1 + i*55, yTige1, x1Tige1+ i*55, y1Tige1, fill = '#F5F5DC', width = 3, tags="tiges" )
+            canvas.create_line(xTige1 + i*55, yTige1, x1Tige1+ i*55, y1Tige1, fill = '#F5F5DC', width = 3)
             for a in range(5):
                 x0,y0,x1,y1= xBoule1 + i*55, yBoule1-a*55, x1Boule1 + i*55, y1Boule1-a*55
                 tag=str(i+1)+"00"+str(a+1)
@@ -67,11 +64,12 @@ def affiche_boulier(n) :
             liste1.append(canvas.create_oval( xBoule1 + i*55, yBoule6, x1Boule1 + i*55, y1Boule6, fill = 'black', tags=str(i+1)+"00"+"e" ))
             boule[f"{xBoule1 + i*55},{yBoule6},{x1Boule1 + i*55},{y1Boule6}"]=[tag]
 
-        canvas.config(height = HAUTEUR, width = 70+n*55)
+        canvas.config(height = HAUTEUR, width = 70+q*55)
         canvas.itemconfigure(tagOrId='cadre', fill= "white") 
-        canvas.create_rectangle (xCadre, yCadre, 20+n*55, y1Cadre, width = 6, outline = 'maroon', tags = "cadre")
-        canvas.create_line(xA, yA, 20+n*55, yB, fill = 'maroon', width = '10', tags="cadre")        
-
+        canvas.create_line(xA, yA, 20+q*55, yB, fill = 'maroon', width = '10', tags="cadre")        
+    
+    else : 
+        print("inexistant")
 
 def gestion(n):
     """le dictionnaire de boule"""
@@ -81,27 +79,49 @@ def gestion(n):
             boule[f"{xBoule1 + i*55},{yBoule1-a*55},{x1Boule1 + i*55},{y1Boule1-a*55}"]=[None]
 
 
-def ev_boules(e) : 
-    """active les boules quand on clique dedans"""
-    global z_texte,n,boule
-    px, py =e.x, e.y
-    a,b=0,0
-    if px < 20+int(z_texte.get("1.0", "end"))*55:
-        a=int((px//55)*55+20)
-        b=int((py//55+1)*55-10)
-        if boule[f"{a},{b},{a+50},{b-50}"] !=None:
-            ahhhhhhhhhh()
+#def ev_boules(e) : 
+#    """active les boules quand on clique dedans"""
+#    global z_texte,n,boule
+#    px, py =e.x, e.y
+#    a,b=0,0
+#    if px < 20+int(z_texte.get("1.0", "end"))*55:
+#        a=int((px//55)*55+20)
+#        b=int((py//55+1)*55-10)
+#       if boule[f"{a},{b},{a+50},{b-50}"] !=None:
+#            pass
 
+def sauvegarde():
+    """ Ecrit le dic boule
+        dans le fichier Boulier.txt
+    """
+    fic = open("Boulier.txt", "w")
+    fic.write(str(boule) + "\n")
+    for i in range(n):
+        for a in range(11):
+            fic.write((f"{xBoule1 + i*55},{yBoule1-a*55},{x1Boule1 + i*55},{y1Boule1-a*55}") + "\n")
+    fic.close()    
+
+
+def load():
+    """Lit le fichier Boulier.txt et met à jour les variables
+    , et modifie l'affichage
+    """
+    fic = open("Boulier.txt", "r")
+    ligne = fic.readline()
+    N = int(ligne)
+    init_boulier()
+    for ligne in fic:
+        pass
+    fic.close()
+    affiche_boulier()
 
 def ahhhhhhhhhh():
     """movement de chaque balle"""
-    """je recherche encore, preneuse de conseils"""
     pass
 
 
 def ohhhhhh():
     """calcul l'ensemble des balle impliquer dans le mouvement et les change de couleur avec ehhhhhhhhhhhhhhhhhhhhhh()"""
-    """je recherche encore, preneuse de conseils"""
     pass
 
 
@@ -118,13 +138,19 @@ def calcul_e():
 racine = tk.Tk()
 racine.title(' Boulier type "Soroban" ')
 canvas = tk.Canvas(racine, height = HAUTEUR, width = LARGEUR, bg = 'white')
-racine.bind("<Button-1>", ev_boules)
-# pour changer la dimension du boulie
-z_texte = tk.Text(racine, width = 10, height = 3 )
-z_texte.bind("Enter", ahhhhhhhhhh())
-res = tk.Button(racine, text = "reset", command = init_boulier())
+# racine.bind("<Button-1>", ev_boules)
+# pour changer la dimension du boulier
+z_texte = tk.Text(racine, width = 12, height = 1 )
+z_texte.insert("1.0", 17)
+
+dim = tk.Button(racine, text = "dimension", command = affiche_boulier )
+res = tk.Button(racine, text = "reset", command = init_boulier)
+sauv = tk.Button(racine, text = "sauvegarder", command = load)
 # positionnement des widgets
-canvas.grid(rowspan= 10, column = 2, row = 0)
-z_texte.grid(row = 0)
-res.grid(row = 7)
+canvas.grid(rowspan= 9, column = 2, row = 0)
+z_texte.grid(row = 1)
+dim.grid(row = 2)
+sauv.grid(row = 5)
+res.grid(row = 6)
+
 racine.mainloop()
