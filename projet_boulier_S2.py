@@ -156,7 +156,7 @@ def operation():
         f = 5
 # pour effectuer une addition
     z_texte.insert("1.0", f + (e*n1))
-# 1 pour effectuer une soustraction
+# pour effectuer une soustraction
     z_texte.insert("1.0", f - (e*n1))
 
 ############################
