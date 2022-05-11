@@ -1,5 +1,5 @@
 ############################
-# Auteur : Ana Wassaf
+# Particpants : Ana Wassaf, Cyriac Thibaudeau, Kimbounou Prunelle S Sekongo, Samy Kolli
 ############################
 
 ############################
@@ -79,8 +79,6 @@ def init_boulier():
                 x0,y0,x1,y1= xBoule + i*55, yBoule1, x1Boule + i*55, y1Boule1
                 canvas.create_oval(xBoule + i*55, yBoule-a*55, x1Boule + i*55, y1Boule-a*55, fill = 'black')
                 liste1.append(canvas.create_oval( x0,y0,x1,y1, fill = 'black')) 
-    canvas.create_rectangle (xCadre, yCadre, 20+n*55, y1Cadre, width = 6, outline = 'maroon', tags = "cadre")
-    canvas.create_line(xA, yA, 20+n*55, yB, fill = 'maroon', width = '10', tags="cadre")
 
 #def affiche_boulier2():
 #    boules = []
@@ -137,7 +135,7 @@ def sauvegarde():
     list(boule)
     fic = open("Boulier.txt", "w")
     fic.write(str(boule) + "\n")
-    for i in range(n):
+    for i in range(q):
         for a in range(11):
             fic.write((f"{xBoule + i*55},{yBoule-a*55},{x1Boule + i*55},{y1Boule-a*55}") + "\n")
     fic.close()    
@@ -171,7 +169,7 @@ dim = tk.Button(racine, text = "dimension", command = affiche_boulier )
 res = tk.Button(racine, text = "reset", command = init_boulier)
 sauv = tk.Button(racine, text = "sauvegarder", command = sauvegarde )
 
-# permet à affiche_boulier() d'afficher un nouveau boulier en enlevant l'ancien' 
+# permet à affiche_boulier() d'afficher un nouveau boulier en enlevant l'ancien
 I = True
 cadre = affiche_boulier()
 I = False
