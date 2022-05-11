@@ -43,5 +43,3 @@
 # Appuyer sur le bouton "sauvegarder" pour enregistrer les clés et les coordonnées des boules dans un fichier .txt
 # le déplacement des boules n'étant pas rédigé, il n'est pas possible de rénitialiser le boulier.
 
-
-##### Statut du projet  
