@@ -148,7 +148,7 @@ def operation():
     """effectue des opérations et les affiches dans le cadre"""
     #utiliser def ev_boules(e)
     fic = open("calcul.boulier", "w")
-    fic .write(str(boule)+"\n") 
+    fic.write(str(boule)+"\n") 
     for i in range(n):
         z_texte = tk.Text(racine, width = 12, height = 1)
         for n1 in range(1,5):
