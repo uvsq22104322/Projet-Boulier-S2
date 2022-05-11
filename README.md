@@ -31,8 +31,8 @@
 
 # 2. Mode opération (attribuée à Kimbounou Prunelle S Sekongo et Samy Kolli)
 # - Les boules ne peuvent plus être activées
-# - Soustraction et addition avec le boulier
-# - Multiplication et division avec le boulier
+# - Soustraction et addition avec le boulier (non achevé)
+# - Multiplication et division avec le boulier (non entamé)
 
 
 #### Fonctionnement 
