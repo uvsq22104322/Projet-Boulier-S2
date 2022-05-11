@@ -25,7 +25,7 @@ xA, yA, xB, yB = 10, 120, r_boule * 17 + 115, 120
 # position du cadre du boulier
 xCadre, yCadre, x1Cadre, y1Cadre = 10, 7, r_boule * 17 + 115, 600
 # position des tiges des bouliers
-xTige, yTige, x1Tige1, y1Tige1 = 45, 12, 45, HAUTEUR-10
+xTige, yTige, x1Tige, y1Tige = 45, 12, 45, HAUTEUR-10
 # position des unaires et des quinaires
 xBoule, yBoule, x1Boule, y1Boule = 20, HAUTEUR-5, 70, HAUTEUR-55
 xBoule1, yBoule1, x1Boule1, y1Boule1 = 20 , 10, 70, 60
@@ -42,7 +42,6 @@ def affiche_boulier() :
     """affiche la dimension du boulier selon 
     la demande de l'utilisateur"""
     global boule, cadre, I
-    gestion(n)
 
     if I == True:
         q = 17
@@ -54,7 +53,7 @@ def affiche_boulier() :
 
     for i in range(q): 
             liste1 = []
-            canvas.create_line(xTige + i*55, yTige, x1Tige1+ i*55, y1Tige1, fill = '#F5F5DC', width = 3, tags = "pre")
+            canvas.create_line(xTige + i*55, yTige, x1Tige+ i*55, y1Tige, fill = '#F5F5DC', width = 3, tags = "pre")
             for a in range(5):
                 x0,y0,x1,y1= xBoule + i*55, yBoule-a*55, x1Boule + i*55, y1Boule-a*55 
                 tag=str(i+1)+"00"+str(a+1)
@@ -62,14 +61,15 @@ def affiche_boulier() :
                 boule[f"{xBoule + i*55},{yBoule-a*55},{x1Boule + i*55},{y1Boule-a*55}"]=[tag]
 
             x0,y0,x1,y1= xBoule + i*55, yBoule1, x1Boule + i*55, y1Boule1
-            tag=str(i+1)+"00"+str("e")
-            liste1.append(canvas.create_oval( xBoule + i*55, yBoule1, x1Boule + i*55, y1Boule1, fill = 'black', tag =str(i+1)+"00"+"e", tags = "pre" ))
+            tag=str(i+1)+"00"+str("6")
+            liste1.append(canvas.create_oval( xBoule + i*55, yBoule1, x1Boule + i*55, y1Boule1, fill = 'black', tag =str(i+1)+"00"+"6", tags = "pre" ))
             boule[f"{xBoule + i*55},{yBoule1},{x1Boule + i*55},{y1Boule1}"]=[tag]
 
     canvas.config(height = HAUTEUR, width = 70+q*55)
     canvas.itemconfigure(tagOrId='cadre', fill= "white") 
     cadre = canvas.create_rectangle (xCadre, yCadre, 20+q*55, y1Cadre, width = 6, outline = 'maroon', tags = "pre")
     canvas.create_line(xA, yA, 20+q*55, yB, fill = 'maroon', width = '10', tags="pre")        
+
 
 def init_boulier():
     """affiche un boulier avec les boules désactivées"""
@@ -80,9 +80,6 @@ def init_boulier():
                 canvas.create_oval(xBoule + i*55, yBoule-a*55, x1Boule + i*55, y1Boule-a*55, fill = 'black')
                 liste1.append(canvas.create_oval( x0,y0,x1,y1, fill = 'black')) 
 
-
-#def mvt_balle():
-#    canvas.move(boule, 0, 55)
 
 #def deplace_colonne(boule):
 #    """sélectionne les boules 
