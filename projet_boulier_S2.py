@@ -80,16 +80,9 @@ def init_boulier():
                 canvas.create_oval(xBoule + i*55, yBoule-a*55, x1Boule + i*55, y1Boule-a*55, fill = 'black')
                 liste1.append(canvas.create_oval( x0,y0,x1,y1, fill = 'black')) 
 
-#def affiche_boulier2():
-#    boules = []
-#    q = int(z_texte.get(index1 = "1.0", index2 = "end-1c"))   
-#    for i in range(q):
-#        liste1 = []
-#        for j in range(5):
-#            liste1.append(canvas.create_oval(i*55, HAUTEUR-(i+j)*55, i+1*55, HAUTEUR-(j*55) ))
-#            boule.append(liste1)
-#    canvas.boule([i][j], 0, 55)
 
+#def mvt_balle():
+#    canvas.move(boule, 0, 55)
 
 #def deplace_colonne(boule):
 #    """sélectionne les boules 
@@ -100,7 +93,17 @@ def init_boulier():
 #        for j in boule :
 #            if tag == j:
 #                mvt_balle(j)
-#    print(j)
+
+#def ev_boules(e) : 
+#    """active les boules quand on clique dedans"""
+#    global z_texte,n,boule
+#    px, py =e.x, e.y
+#    a,b=0,0
+#    if px < 20+int(z_texte.get("1.0", "end"))*55:
+#        a=int((px//55)*55+20)
+#        b=int((py//55+1)*55-10)
+#        if boule[f"{a},{b},{a+50},{b+50}"] !=None:
+#             deplace_colonne(boule[f"{a},{b},{a+50},{b-50}"])
 
 
 def couleur_b():
@@ -114,18 +117,6 @@ def gestion(q):
     for i in range(q):
         for a in range(11):
             boule[f"{xBoule1 + i*55},{yBoule1-a*55},{x1Boule1 + i*55},{y1Boule1-a*55}"]=[None]
-
-
-#def ev_boules(e) : 
-#    """active les boules quand on clique dedans"""
-#    global z_texte,n,boule
-#    px, py =e.x, e.y
-#    a,b=0,0
-#    if px < 20+int(z_texte.get("1.0", "end"))*55:
-#        a=int((px//55)*55+20)
-#        b=int((py//55+1)*55-10)
-#        if boule[f"{a},{b},{a+50},{b+50}"] !=None:
-#             deplace_colonne(boule[f"{a},{b},{a+50},{b-50}"])
 
 
 def sauvegarde():
@@ -155,6 +146,7 @@ def load():
     affiche_boulier()
 
 # MODE OPÉRATION
+
 def operation():
     """effectue des opérations et les affiches dans le cadre"""
     #utiliser def ev_boules(e)
