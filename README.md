@@ -22,7 +22,8 @@
 #   - création d'un dictionnaire pour repérer les boules grâce à leur clé (fonction gestion)
 #   - matrice affichant les boules et les tiges (fonction affiche_boulier)
 # - Modification de la dimension du boulier 
-#   - création d'une zone de texte en interaction avec l'utilisateur reliée à la matrice affichant le boulier (fonction affiche_boulier)
+#   - création d'une zone de texte en interaction avec l'utilisateur 
+# reliée à la matrice affichant le boulier (fonction affiche_boulier)
 # - Changement de couleur des boules (non entamé)
 # - Déplacement des boules (non achevé)
 # - Modification de la vitesse des déplacements (non entamé)
@@ -40,7 +41,8 @@
 # Affichage d'un boulier avec la plus petite dimension possible
 # Saisir un nombre entier dans la zone de texte 
 # Appuyer sur le bouton "dimension" pour augmenter/diminuer le nombre de tiges
-# Appuyer sur le bouton "sauvegarder" pour enregistrer les clés et les coordonnées des boules dans un fichier .txt
+# Appuyer sur le bouton "sauvegarder" pour enregistrer les clés 
+# et les coordonnées des boules dans un fichier .txt
 # le déplacement des boules n'étant pas rédigé, il n'est pas possible de réinitialiser le boulier.
 
 
