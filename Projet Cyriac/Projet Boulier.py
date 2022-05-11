@@ -44,16 +44,21 @@ def Clear():
     #for i in range(ID_boules):
     #    boules[i] = 0
     #    i += 1
+    global ID_boules
+
+    ID_boules = 0
     boules.clear()
+
     print(boules) #Vérif ID_boules
 
-def callback():
-    canvas1.itemconfig(ID_boules,fill='red')
-    print(boules)
+#def callback():
+#    global ID_boules
+#    canvas1.itemconfig(ID_boules,fill='red')
+#    print(boules)
 
 #Mise en place des boutons 
 button1 = tk.Button(racine, text="start", bg="red", command = Start)
-button2 = tk.Button(racine, text="clear", bg="red", command = callback)
+button2 = tk.Button(racine, text="clear", bg="red", command = Clear)
 
 #Positionnement des éléments
 canvas1.grid(column=1, row=1, rowspan=9, columnspan=17)
