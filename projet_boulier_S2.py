@@ -17,7 +17,7 @@ n = 17
 
 # hauteur du canevas
 HAUTEUR = 600
-# taille du canevas
+# largeur du canevas
 LARGEUR = r_boule * n + 115
 
 # position de la barre médiane
