@@ -110,10 +110,10 @@ def couleur_b():
     pass
 
 
-def gestion(n):
+def gestion(q):
     """dictionnaire de boule"""
     global boule
-    for i in range(n):
+    for i in range(q):
         for a in range(11):
             boule[f"{xBoule1 + i*55},{yBoule1-a*55},{x1Boule1 + i*55},{y1Boule1-a*55}"]=[None]
 
