@@ -155,8 +155,20 @@ def load():
     affiche_boulier()
 
 # MODE OPÉRATION
-def calcul_e():
-    "affiche les étapes des opérations"
+def operation():
+    """effectue des opérations et les affiches dans le cadre"""
+    #utiliser def ev_boules(e)
+    fic = open("calcul.boulier", "w")
+    fic .write(str(boule)+"\n") 
+    for i in range(n):
+        z_texte = tk.Text(racine, width = 12, height = 1)
+        for n1 in range(1,5):
+            e = 1
+        f = 5
+# pour effectuer une addition
+    z_texte.insert("1.0", f + (e*n1))
+# 1 pour effectuer une soustraction
+    z_texte.insert("1.0", f - (e*n1))
 
 ############################
 # programme principal 
